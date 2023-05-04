@@ -6,7 +6,7 @@ inputs:
     description: 'Base URL for your Superset API endpoint'
     required: true
     default: 'http://localhost:8088'
-  DASHBOARD_FILE_PATH: 
+  dashboard_file_path: 
     description: Path of the dashboard you want to import
     required: true
 runs:
