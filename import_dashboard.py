@@ -128,7 +128,7 @@ def import_dashboard(session, login_token, csrf_token):
         assert response.status_code == 200, f'Error in importing the dashboard\n{response}'
         print(f'Dashboard imported succesfully from {container_dashboard_path}')
     except Exception as e:
-        print(f'Failed importing the dashboard: {e}\nResponse: {response}')
+        print(f'Failed importing the dashboard: {e}\nResponse: {response.content}')
         raise(e)
 
 def main():
