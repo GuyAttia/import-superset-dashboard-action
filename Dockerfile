@@ -3,7 +3,7 @@ FROM python:3.9.13
 
 COPY requirements.txt /
 RUN /usr/local/bin/python -m pip install --upgrade pip && \
-  pip3 install --no-cache-dir -r /requirements.txt
+  pip install --no-cache-dir -r /requirements.txt
 
 # Copies your code file from your action repository to the filesystem path `/` of the container
 COPY import_dashboard.py /import_dashboard.py
