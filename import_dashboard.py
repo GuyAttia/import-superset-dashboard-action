@@ -69,11 +69,11 @@ def create_passwords_string() -> str:
     Returns: String mappign the DBs and their passwords
     """
     try:
-        DBS_PASSWORDS = getenv('DBS_PASSWORDS', {})
+        DBS_PASSWORDS = getenv('DBS_PASSWORDS', "{}")
         pass_map = js.loads(DBS_PASSWORDS)
         pass_dict = {f"databases/{k}.yaml": v for k, v in pass_map.items()}
 
-        passwords_string = str(pass_dict)
+        passwords_string = js.dumps(pass_dict)
         return passwords_string
     except Exception as e:
         print(f'Failed creating the password string: {e}')
@@ -128,7 +128,7 @@ def import_dashboard(session, login_token, csrf_token):
         assert response.status_code == 200, f'Error in importing the dashboard\n{response}'
         print(f'Dashboard imported succesfully from {container_dashboard_path}')
     except Exception as e:
-        print(f'Failed importing the dashboard: {e}')
+        print(f'Failed importing the dashboard: {e}\nResponse: {response.content}')
         raise(e)
 
 def main():
